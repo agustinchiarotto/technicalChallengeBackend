@@ -1,4 +1,4 @@
-# Challenge para candidatos a Backend Developers - Kin+Carta
+# Challenge para candidatos a Backend Developers - 
 
 **Guillermo Agustín Chiarotto**
 Email: Agusgc_99@hotmail.com
@@ -12,7 +12,7 @@ Linkedin: https://www.linkedin.com/in/agustinchiarotto/
 ---
 
 **Objective**
-The objective of this code is to respond to the functionality presented in the Kin+Carta backend challenges. It has different endpoints detailed in the api.html file.
+The objective of this code is to respond to the functionality presented in the _Deleted Name_ backend challenges. It has different endpoints detailed in the api.html file.
 
 ---
 
