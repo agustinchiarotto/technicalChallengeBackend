@@ -1,0 +1,27 @@
+{
+  "name": "kin-carta",
+  "version": "1.0.0",
+  "description": "Kin+Carta backend test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "mockdata": "node ./scripts/insertMockdata.js $*"
+  },
+  "author": "Agustin Chiarotto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "express": "^4.17.1",
+    "jest": "^26.6.2",
+    "mongodb-memory-server-global": "^6.9.3",
+    "mongoose": "^5.10.5",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
+  }
+}

@@ -1,0 +1,356 @@
+#%RAML 1.0
+title: Backend Challenge Kin+Carta
+description: Technical Challenge Backend Developer - Kin+Carta 
+mediaType: application/json
+
+/contact:
+  description: Contact entity
+  post:
+    description: Save a contact on the server's database
+    bodyParameters: 
+      name:
+        displayName: name
+        type: string
+        description: "Contact name"
+        example: Peter Boris
+        required: true
+      profile_image:
+        displayName: profile_image
+        type: string
+        description: "Contact profile image url"
+        example: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff'
+        required: true
+      company:
+        displayName: company
+        type: string
+        description: "Contact company name"
+        example: Steam Brothers
+        required: true
+      phone_number: 
+        displayName: phone_number
+        type: string
+        description: "Contact phone number"
+        example: +12994575555
+        required: true
+      email:
+        displayName: email
+        type: string
+        description: "Contact email. This is a unique field"
+        example: anEmail@email.com
+        required: true
+      birtdate:
+        displayName: birtdate
+        type: string
+        description: "Contact birtdate"
+        example: 12/05/1985
+        required: true
+      state:
+        displayName: state
+        type: string
+        description: "Contact address's state"
+        example: California
+        required: true
+      city:
+        displayName: city
+        type: string
+        description: "Contact address's city"
+        example: Los Angeles
+        required: true
+      street:
+        displayName: street
+        type: string
+        description: "Contact address's street"
+        example: Fake street
+        required: true
+      streetNumber:
+        displayName: streetNumber
+        type: string
+        description: "Contact address's streetNumber"
+        example: 385
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {id: '641ec9a4-3bef-4114-9936-2ef2434b2d36',
+              name: 'Peter Boris',
+              company: 'Steam Brothers',
+              profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+              email: 'email@email.com',
+              birtdate: '4/12/1980',
+              phone_number: '+15874253652',
+              address: {
+                state: 'California',
+                city: 'Los Angeles',
+                street: 'Fake street',
+                streetNumber: '123',
+              }
+              }
+      400:
+        body:
+          application/json:
+            example: |
+              {"message": "Bad Request. No parameters to search."}
+  /{_id}:
+    description: Contact entity
+    get:
+      description: Get the contact with `_id = {_id}`. 
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {id: '641ec9a4-3bef-4114-9936-2ef2434b2d36',
+                name: 'Peter Boris',
+                company: 'Steam Brothers',
+                profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+                email: 'email@email.com',
+                birtdate: '4/12/1980',
+                phone_number: '+15874253652',
+                address: {
+                  state: 'California',
+                  city: 'Los Angeles',
+                  street: 'Fake street',
+                  streetNumber: '123',
+                }
+                }
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "Contact not found"}
+        400:
+          body:
+            application/json:
+              example: |
+                {"message": "Error"}
+    delete: 
+      description: Delete the contact with `_id = {_id}`. 
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {"message": "Contact deleted"}
+          404:
+            body:
+              application/json:
+                example: |
+                  {"message": "Contact not found"}
+    patch:
+      description: Save a contact on the server's database
+      bodyParameters: 
+        name:
+          displayName: name
+          type: string
+          description: "Contact name"
+          example: Peter Boris
+          required: false
+        profile_image:
+          displayName: profile_image
+          type: string
+          description: "Contact profile image url"
+          example: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff'
+          required: false
+        company:
+          displayName: company
+          type: string
+          description: "Contact company name"
+          example: Steam Brothers
+          required: false
+        phone_number: 
+          displayName: phone_number
+          type: string
+          description: "Contact phone number"
+          example: +12994575555
+          required: false
+        email:
+          displayName: email
+          type: string
+          description: "Contact email. This is a unique field"
+          example: anEmail@email.com
+          required: false
+        birtdate:
+          displayName: birtdate
+          type: string
+          description: "Contact birtdate"
+          example: 12/05/1985
+          required: false
+        state:
+          displayName: state
+          type: string
+          description: "Contact address's state"
+          example: California
+          required: false
+        city:
+          displayName: city
+          type: string
+          description: "Contact address's city"
+          example: Los Angeles
+          required: false
+        street:
+          displayName: street
+          type: string
+          description: "Contact address's street"
+          example: Fake street
+          required: false
+        streetNumber:
+          displayName: streetNumber
+          type: string
+          description: "Contact address's streetNumber"
+          example: 385
+          required: false
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {id: '641ec9a4-3bef-4114-9936-2ef2434b2d36',
+                name: 'Peter Boris',
+                company: 'Steam Brothers',
+                profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+                email: 'email@email.com',
+                birtdate: '4/12/1980',
+                phone_number: '+15874253652',
+                address: {
+                  state: 'California',
+                  city: 'Los Angeles',
+                  street: 'Fake street',
+                  streetNumber: '123',
+                }
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {"message": "Bad Request. No parameters to update."}
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "Contact not found"}  
+        500:
+          body:
+            application/json:
+              example: |
+                {"message": "Server Error"} 
+  /search/waysofcontact:
+    description: Contact entity
+    get:
+      description: Get a contact by his phone or email
+      queryParameters:
+        phone_number: 
+          displayName: phone_number
+          type: string
+          description: "A contact phone number"
+          example: +12994575555
+          required: false
+        email:
+          displayName: email
+          type: string
+          description: "A contact email"
+          example: anEmail@email.com
+          required: false
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {id: '641ec9a4-3bef-4114-9936-2ef2434b2d36',
+                name: 'Peter Boris',
+                company: 'Steam Brothers',
+                profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+                email: 'email@email.com',
+                birtdate: '4/12/1980',
+                phone_number: '+15874253652',
+                address: {
+                  state: 'California',
+                  city: 'Los Angeles',
+                  street: 'Fake street',
+                  streetNumber: '123',
+                }
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {"message": "Bad Request. No parameters to search."}
+        500:
+          body:
+            application/json:
+              example: |
+                {"message": "Server Error"}
+  /search/address:  
+    description: Contact entity
+    get:
+      description: Get all the contacts in a certain city and/or state. It accepts skip and limit for pagination.
+      queryParameters:
+        city: 
+          displayName: city
+          type: string
+          description: "A city to filter"
+          example: 'Los Angeles',
+          required: false
+        state:
+          displayName: state
+          type: string
+          description: "A state to filter"
+          example: 'California'
+          required: false
+        limit:
+          description: "Quantity of elements per page, if it is 0 or not defined it is unlimited"
+          required: false
+          type: number
+          example: 50
+        skip:
+          description: "Number of database items that are ignored, if it is 0 or undefined it starts from the beginning"
+          required: false
+          type: number
+          example: 10
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                [ 
+                  {id: '641ec9a4-3bef-4114-9936-2ef2434b2d36',
+                  name: 'Peter Boris',
+                  company: 'Steam Brothers',
+                  profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+                  email: 'email@email.com',
+                  birtdate: '4/12/1980',
+                  phone_number: '+15874253652',
+                  address: {
+                    state: 'California',
+                    city: 'Los Angeles',
+                    street: 'Fake street',
+                    streetNumber: '123',
+                  }
+                  },
+                  {id: 'a59c6ee8-06b0-4629-9b4c-03b79edb851a',
+                  name: 'Francis Malm',
+                  company: 'Steam Brothers',
+                  profile_image: 'http://dummyimage.com/177x231.bmp/5fa2dd/ffffff',
+                  email: 'otherEmail@email.com',
+                  birtdate: '24/11/1996',
+                  phone_number: '+1457896321',
+                  address: {
+                    state: 'California',
+                    city: 'Los Angeles',
+                    street: 'Fake street2',
+                    streetNumber: '1234',
+                  }
+                  },
+                ]
+
+        400:
+          body:
+            application/json:
+              example: |
+                {"message": "Bad Request. No parameters to search."}
+        500:
+          body:
+            application/json:
+              example: |
+                {"message": "Server Error"}
